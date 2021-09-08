@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content=
+        "width=device-width, 
+        initial-scale=1.0" />
+  
+    <title>Digital Clock</title>
+  
+    <style>
+        #clock {
+            font-size: 175px;
+            width: 900px;
+            margin-left: 200px;
+            margin-top: 100px;
+            text-align: center;
+            border: 2px solid black;
+            border-radius: 20px;
+            
+        }
+    </style>
+</head>
+  
+<body>
+    <div id="clock">
+
+    </div>
+  
+    <script>
+        setInterval(showTime, 1000);
+        function showTime() {
+            let val = new Date();
+            let hour = val.getHours();
+            let min = val.getMinutes();
+            let sec = val.getSeconds();
+            let dt=val.getDate();
+            let mn=val.getMonth();
+            let yr=val.getFullYear();
+            let day=val.getUTCDay();
+            am_pm = "AM";
+  
+            if (hour > 12) {
+                hour -= 12;
+                am_pm = "PM";
+            }
+            if (hour == 0) {
+                hr = 12;
+                am_pm = "AM";
+            }
+  
+            hour = hour < 10 ? "0" + hour : hour;
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? "0" + sec : sec;
+            switch(day)
+            {
+                case 0:
+                day="Sunday";
+                break;
+                case 1:
+                day="Monday";
+                break;
+                case 2:
+                day="Tuesday";
+                break;
+                case 3:
+                day="Wednesday";
+                break;
+                case 4:
+                day="Thursday";
+                break;
+                case 5:
+                day="Friday";
+                break;
+                case 6:
+                day="Saturday";
+                break;
+            }
+            
+            let a=1;
+            mn=mn+1
+
+            let currentTime = hour + ":" 
+                + min + ":" + sec + am_pm 
+                +"\n" + dt + "-" + mn + "-" + yr+"\n"+day;
+
+            
+
+  
+            document.getElementById("clock")
+                .innerHTML = currentTime;
+            
+
+        }
+  
+        showTime();
+    </script>
+</body>
+  
+</html
